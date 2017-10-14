@@ -1,7 +1,11 @@
 class Admin::CategoriesController < Admin::BaseController
   cache_sweeper :blog_sweeper
 
-  def index; redirect_to :action => 'new' ; end
+
+  def index; redirect_to :action => 'new' ;end
+  # we do not want to redirect to new
+  # we want to render index page
+ 
   def edit; new_or_edit;  end
 
   def new 
@@ -25,7 +29,8 @@ class Admin::CategoriesController < Admin::BaseController
 
   def new_or_edit
     @categories = Category.find(:all)
-    @category = Category.find(params[:id])
+    # @category = Category.find(params[:id])
+    @category = Category.new
     @category.attributes = params[:category]
     if request.post?
       respond_to do |format|

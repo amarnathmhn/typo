@@ -80,7 +80,9 @@ end
 When /^(?:|I )follow "([^"]*)"$/ do |link|
   
   if /^Categories link$/.match(link)
-    click_link('/categories')
+    click_link('Categories')
+  elsif /^Edit$/.match(link)
+    click_link('Edit')
   end
 end
 

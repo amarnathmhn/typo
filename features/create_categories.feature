@@ -2,8 +2,11 @@ Feature: Create new category
   As an admin
   I want to create new category
   
+   Background:
+    Given the blog is set up
+    And I am logged into the admin panel
+    
   Scenario: Create new category on categories page
-    Given I am on the admin page
     When I follow "Categories link"
     Then I should see "Categories"
     When I fill in "Name" with "random blog"
@@ -11,6 +14,6 @@ Feature: Create new category
     When I fill in "Permalink" with "random permalink"
     When I fill in "Description" with "random description"
     And I press "Save"
-    Then I should see "Category created successfully"
+    Then I should see "successfully saved"
     
   
