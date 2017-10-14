@@ -78,7 +78,10 @@ When /^(?:|I )press "([^"]*)"$/ do |button|
 end
 
 When /^(?:|I )follow "([^"]*)"$/ do |link|
-  click_link(link)
+  
+  if /^Categories link$/.match(link)
+    click_link('/categories')
+  end
 end
 
 When /^(?:|I )fill in "([^"]*)" with "([^"]*)"$/ do |field, value|
@@ -127,6 +130,8 @@ When /^(?:|I )attach the file "([^"]*)" to "([^"]*)"$/ do |path, field|
 end
 
 Then /^(?:|I )should see "([^"]*)"$/ do |text|
+  
+  
   if page.respond_to? :should
     page.should have_content(text)
   else
@@ -276,3 +281,4 @@ end
 Then /^show me the page$/ do
   save_and_open_page
 end
+
